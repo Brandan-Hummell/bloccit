@@ -1,5 +1,5 @@
 require 'random_data'
-
+=begin
  # Create Posts
  50.times do
  # #1
@@ -24,3 +24,16 @@ require 'random_data'
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+=end
+50.times do
+  # #1
+    Advertisement.create!(
+  # #2
+      title:  RandomData.random_sentence,
+      copy:   RandomData.random_paragraph,
+      price: rand(1..35)
+    )
+  end
+  advertisements = Advertisement.all
+  puts "Seed Finished"
+  puts "#{Advertisement.count} advertisements created"
