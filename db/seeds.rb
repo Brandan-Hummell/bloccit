@@ -1,5 +1,5 @@
 require 'random_data'
-
+=begin
  # Create Posts
  50.times do
  # #1
@@ -24,3 +24,13 @@ require 'random_data'
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+=end
+ 
+  50.times do
+   Question.create!(
+     title:  RandomData.random_sentence,
+     body:   RandomData.random_paragraph,
+     resolved: false
+   )
+ end
+ questions = Question.all
