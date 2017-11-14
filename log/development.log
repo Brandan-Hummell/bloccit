@@ -441,3 +441,101 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 160ms (Views: 137.8ms | ActiveRecord: 1.0ms)
 
 
+Started GET "/topics" for 127.0.0.1 at 2017-11-13 23:09:16 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TopicsController#index as HTML
+  Rendering topics/index.html.erb within layouts/application
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  Rendered topics/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 429ms (Views: 398.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at 2017-11-13 23:09:29 -0500
+Processing by TopicsController#new as HTML
+  Rendering topics/new.html.erb within layouts/application
+  Rendered topics/_form.html.erb (16.5ms)
+  Rendered topics/new.html.erb within layouts/application (32.5ms)
+Completed 200 OK in 168ms (Views: 151.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/topics" for 127.0.0.1 at 2017-11-13 23:09:31 -0500
+Processing by TopicsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/TfADHS8PIvnxFMLBBGLQXlDzqtdDrwktUWTVHFLKcRWJwgN4AwsYeAiTVw0ZqlQ2jCqTGpKGmldqdaz8CzVhQ==", "topic"=>{"name"=>"", "description"=>"", "public"=>"1"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering topics/new.html.erb within layouts/application
+  Rendered topics/_form.html.erb (2.5ms)
+  Rendered topics/new.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 136ms (Views: 132.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/topics" for 127.0.0.1 at 2017-11-13 23:09:59 -0500
+Processing by TopicsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZrfWH6HCbgy+xr3PEzzb9n42ltC2F3DSTQ7PwJjVaECivwAHWPPF5GXpfPl8i7CyKdVCpIby9fptH2WXzajWrA==", "topic"=>{"name"=>"Afiuhwekhfosdh", "description"=>"KJFHwuiehfjdfhsieufhbksdf", "public"=>"1"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Afiuhwekhfosdh"], ["description", "KJFHwuiehfjdfhsieufhbksdf"], ["created_at", "2017-11-14 04:09:59.460514"], ["updated_at", "2017-11-14 04:09:59.460514"]]
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/topics/2
+Completed 302 Found in 16ms (ActiveRecord: 10.5ms)
+
+
+Started GET "/topics/2" for 127.0.0.1 at 2017-11-13 23:09:59 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (25.5ms)
+Completed 200 OK in 173ms (Views: 141.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/topics/2/edit" for 127.0.0.1 at 2017-11-13 23:10:03 -0500
+Processing by TopicsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering topics/edit.html.erb within layouts/application
+  Rendered topics/_form.html.erb (1.5ms)
+  Rendered topics/edit.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 150ms (Views: 132.8ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/topics/2" for 127.0.0.1 at 2017-11-13 23:10:05 -0500
+Processing by TopicsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cavn+TxdoY1NpELLfNT2VC+VZMLZoFS5woaOmEFU06pBo35KpeqxDwyeAPiTUv4QaVzcDkY/cn9hAaSJipN4Iw==", "topic"=>{"name"=>"Afiuhwekhfosdh", "description"=>"KJFHwuiehfjdfhsieufhbksdf", "public"=>"1"}, "commit"=>"Save", "id"=>"2"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/topics/2
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/2" for 127.0.0.1 at 2017-11-13 23:10:05 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 133ms (Views: 115.9ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/topics/2" for 127.0.0.1 at 2017-11-13 23:10:10 -0500
+Processing by TopicsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YGn2pVx4zxa/uRfpq9BwLRosBWHeuUtstxEq2955hoykYSC9pUlk/mSW1t/EZxtpTc/RFe5czkSXAICMiwQ4YA==", "id"=>"2"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 2]]
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "topics" WHERE "topics"."id" = ?[0m  [["id", 2]]
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/topics
+Completed 302 Found in 12ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/topics" for 127.0.0.1 at 2017-11-13 23:10:10 -0500
+Processing by TopicsController#index as HTML
+  Rendering topics/index.html.erb within layouts/application
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  Rendered topics/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 140ms (Views: 123.5ms | ActiveRecord: 0.0ms)
+
+
