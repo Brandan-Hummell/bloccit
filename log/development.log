@@ -126,3 +126,318 @@ Migrating to AddTopicToPosts (20171111201135)
             FROM sqlite_temp_master
             WHERE name='index_posts_on_topic_id' AND type='index'
 [0m
+Started GET "/topics/" for 127.0.0.1 at 2017-11-13 22:27:00 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TopicsController#index as HTML
+  Rendering topics/index.html.erb within layouts/application
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  Rendered topics/index.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 107ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (C:/Users/Michael/Documents/Bloc/Bloccit/code/bloccit/app/views/layouts/application.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting ')'
+( link_to "Topics" topics_path );@output_buffer.safe_append=
+                              ^):
+  
+app/views/layouts/application.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting ')'
+Started GET "/topics/" for 127.0.0.1 at 2017-11-13 22:27:44 -0500
+Processing by TopicsController#index as HTML
+  Rendering topics/index.html.erb within layouts/application
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  Rendered topics/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 7142ms (Views: 7122.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at 2017-11-13 22:28:04 -0500
+Processing by TopicsController#new as HTML
+  Rendering topics/new.html.erb within layouts/application
+  Rendered topics/new.html.erb within layouts/application (51.6ms)
+Completed 200 OK in 207ms (Views: 172.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/topics" for 127.0.0.1 at 2017-11-13 22:28:18 -0500
+Processing by TopicsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EvbhMX69JfN6MD0oLxOgwsyfqbJH4Dk2jho5JEjje4y55ikw6g01GX3WI38fZILTb+zNVXCkn3tm9nzDyYSHzQ==", "topic"=>{"name"=>"Music", "description"=>"Discussions on music", "public"=>"1"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Music"], ["description", "Discussions on music"], ["created_at", "2017-11-14 03:28:18.128907"], ["updated_at", "2017-11-14 03:28:18.128907"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/topics/1
+Completed 302 Found in 10ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at 2017-11-13 22:28:18 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 187ms (Views: 137.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at 2017-11-13 22:28:20 -0500
+Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 168ms (Views: 133.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/topics/1/posts" for 127.0.0.1 at 2017-11-13 22:29:32 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2TBvvAAlo9gh3pOJO5hZey9nQCDabUrBsgIL6La2wA66w7ZP/PwZnN1o8Qy85JTWeXUvoKjK7Z2rB0Frk49pIQ==", "post"=>{"title"=>"Punk and Ska", "body"=>"Find the crappy little joints with awesome music."}, "commit"=>"Save", "topic_id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Punk and Ska"], ["body", "Find the crappy little joints with awesome music."], ["created_at", "2017-11-14 03:29:32.604765"], ["updated_at", "2017-11-14 03:29:32.604765"], ["topic_id", 1]]
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/topics/1/posts/1
+Completed 302 Found in 32ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/topics/1/posts/1" for 127.0.0.1 at 2017-11-13 22:29:32 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 168ms (Views: 127.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/1/posts/1/edit" for 127.0.0.1 at 2017-11-13 22:29:34 -0500
+Processing by PostsController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_form.html.erb (1.5ms)
+  Rendered posts/edit.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 162ms (Views: 143.7ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/topics/1/posts/1" for 127.0.0.1 at 2017-11-13 22:29:36 -0500
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EcVAYTzlL8LkW3JzFbp58j+Kr3YEZbmmilIx2YX7GpDQ+/MgmTTzjxp01gS1kc8RPsyFMRazUVcekpcLWibKiQ==", "post"=>{"title"=>"Punk and Ska", "body"=>"Find the crappy little joints with awesome music."}, "commit"=>"Save", "topic_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/topics/1/posts/1
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/topics/1/posts/1" for 127.0.0.1 at 2017-11-13 22:29:36 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 136ms (Views: 119.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/topics/1/posts/" for 127.0.0.1 at 2017-11-13 22:32:39 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/topics/1/posts"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/topics/1/" for 127.0.0.1 at 2017-11-13 22:32:51 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 148ms (Views: 130.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at 2017-11-13 22:32:53 -0500
+Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.5ms)
+  Rendered posts/new.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 157ms (Views: 139.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/topics" for 127.0.0.1 at 2017-11-13 22:33:00 -0500
+Processing by TopicsController#index as HTML
+  Rendering topics/index.html.erb within layouts/application
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  Rendered topics/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 133ms (Views: 115.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at 2017-11-13 22:33:02 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 137ms (Views: 119.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at 2017-11-13 22:33:33 -0500
+Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.5ms)
+  Rendered posts/new.html.erb within layouts/application (25.5ms)
+Completed 200 OK in 250ms (Views: 208.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/topics/1/posts" for 127.0.0.1 at 2017-11-13 22:33:35 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RGz94m/2OL4oY5pvejH/d/LWokjAZ436eL/FtWEqi34nnyQRky+C+tTV+Or9TTLapMTNyLLAKqZhuo82RBMiUQ==", "post"=>{"title"=>"", "body"=>""}, "commit"=>"Save", "topic_id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.5ms)
+  Rendered posts/new.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 141ms (Views: 133.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/topics/1/posts" for 127.0.0.1 at 2017-11-13 22:43:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/topics/1/posts"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/topics/1/" for 127.0.0.1 at 2017-11-13 22:44:01 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 173ms (Views: 145.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at 2017-11-13 22:44:03 -0500
+Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (4.0ms)
+  Rendered posts/new.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 185ms (Views: 167.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/topics/1/posts" for 127.0.0.1 at 2017-11-13 22:44:08 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9geBSezWcjSfWh9owiPoqYlVOGHOVRBvTVTDcPgWMT2V9Fi6EA/IcGPsfe1FXyUE30dX4bzytzNUUYnz3S+YEg==", "post"=>{"title"=>""}, "commit"=>"Save", "topic_id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (2.5ms)
+  Rendered posts/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 134ms (Views: 130.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/topics/1/" for 127.0.0.1 at 2017-11-13 22:44:42 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ?[0m  [["topic_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 161ms (Views: 136.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at 2017-11-13 22:44:44 -0500
+Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (1.5ms)
+  Rendered posts/new.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 150ms (Views: 131.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/topics/1/posts" for 127.0.0.1 at 2017-11-13 22:44:46 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"in5DPRsYlUIlsYtPJvBhIGDyTNP2vChoOFDjnTgffzbpjZrO58EvBtkH6cqhjKyNNuAjU4QbjzQhVakeHSbWGQ==", "post"=>{"title"=>"", "body"=>""}, "commit"=>"Save", "topic_id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (2.5ms)
+  Rendered posts/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 142ms (Views: 138.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/topics/1/posts" for 127.0.0.1 at 2017-11-13 22:45:40 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x8k8/xMDoYq+6BeaIBSD/vNQpnZVhM9BCiOA3Ou0F0MDwern6jIKYmXH1qxPo+i6pLNyAmVhSmkqMiqLvsmprw==", "post"=>{"title"=>"Hip Hop & Rap", "body"=>"Check out what's spinnin' at the local studios"}, "commit"=>"Save", "topic_id"=>"1"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Hip Hop & Rap"], ["body", "Check out what's spinnin' at the local studios"], ["created_at", "2017-11-14 03:45:40.615937"], ["updated_at", "2017-11-14 03:45:40.615937"], ["topic_id", 1]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/topics/1/posts/2
+Completed 302 Found in 20ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/topics/1/posts/2" for 127.0.0.1 at 2017-11-13 22:45:40 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"2"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 160ms (Views: 137.8ms | ActiveRecord: 1.0ms)
+
+
