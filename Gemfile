@@ -41,6 +41,8 @@ gem 'tzinfo-data'
 
 gem 'bootstrap-sass'
 
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'pry-rails'
