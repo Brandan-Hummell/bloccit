@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-    def new
+  skip_before_action :verify_authenticity_token  
+  
+  def new
         @user = User.new
     end
 
@@ -17,5 +19,13 @@ class UsersController < ApplicationController
           flash.now[:alert] = "There was an error creating your account. Please try again."
           render :new
         end
-      end
+    end
+
+    def confirm 
+      @user = User.new
+      @user.name = params[:user][:name]
+      @user.email = params[:user][:email]
+      @user.password = params.permit![:user][:password]
+      @user.password_confirmation = params.permit![:user][:password_confirmation]
+    end
 end

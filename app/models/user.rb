@@ -10,7 +10,7 @@ class User < ApplicationRecord
           self.name = name_array.join(' ')
         end
         }
-    
+  
 
       validates :name, length: { minimum: 1, maximum: 100 }, presence: true
 
