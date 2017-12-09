@@ -1428,3 +1428,91 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 124ms (Views: 111.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:48:56 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 120ms (Views: 107.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:49:27 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 145ms (Views: 113.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:24 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 146ms (Views: 113.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:26 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 121ms (Views: 106.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:36 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 125ms (Views: 111.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:38 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 122ms (Views: 108.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:38 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 122ms (Views: 107.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:38 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 122ms (Views: 107.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:39 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 123ms (Views: 110.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:39 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 120ms (Views: 106.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-12-09 13:50:44 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 123ms (Views: 109.5ms | ActiveRecord: 0.0ms)
+
+
