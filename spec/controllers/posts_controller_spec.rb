@@ -118,6 +118,11 @@ RSpec.describe PostsController, type: :controller do
         post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
         expect(response).to redirect_to [my_topic, Post.last]
       end
+
+      it "Increases vote by one automatically" do
+        post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
+        expect(Vote.count).to eq(1)
+      end
     end
 
     describe "GET edit" do
@@ -198,6 +203,11 @@ RSpec.describe PostsController, type: :controller do
       it "redirects to the new post" do
         post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
         expect(response).to redirect_to [my_topic, Post.last]
+      end
+
+      it "Increases vote by one automatically" do
+        post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
+        expect(Vote.count).to eq(1)
       end
     end
 
@@ -311,6 +321,11 @@ RSpec.describe PostsController, type: :controller do
       it "redirects to the new post" do
         post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
         expect(response).to redirect_to [my_topic, Post.last]
+      end
+
+      it "Increases vote by one automatically" do
+        post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
+        expect(Vote.count).to eq(1)
       end
     end
 

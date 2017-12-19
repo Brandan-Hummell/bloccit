@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   before_action :authorize_user, except: [:show, :new, :create]
 
+  after_action :create_vote, only: [:create]
+
   def show
     @post = Post.find(params[:id])
   end
@@ -67,5 +69,10 @@ class PostsController < ApplicationController
       flash[:alert] = "You must be an admin to do that."
         redirect_to [post.topic, post]
     end
+  end
+
+  def create_vote
+    user = current_user
+    user.votes.create!(value: 1, post: @post)
   end
 end
