@@ -9350,3 +9350,510 @@ Migrating to AddRankToPosts (20171219024134)
             FROM sqlite_temp_master
             WHERE name='index_votes_on_user_id' AND type='index'
 [0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20171221024200)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "post_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_dcaf44a136"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_user_id" ON "favorites" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_post_id" ON "favorites" ("post_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171221024200"]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_topic_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_topic_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "a"], ["password_digest", "$2a$04$pHCIG.oHe1pLjOYHjKkEM.MeL6bLjuSftPI2QywgTGqUt9SiNSepa"], ["created_at", "2017-12-21 02:50:58.822672"], ["updated_at", "2017-12-21 02:50:58.822672"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "a"], ["LIMIT", 1]]
+  [1m[35m (4.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "xx"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "xxx"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$YXoDUdx.XDo4HW54PZjPjOKr/ElKqySWe03x9odhl1xk2DjlY9c/2"], ["created_at", "2017-12-21 02:50:58.865702"], ["updated_at", "2017-12-21 02:50:58.865702"], ["role", 0]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$FSe4Z6CU7rd2c4SQ4J6noekJIBlriYCKZop9IQULmZaw28R2G.Dqa"], ["created_at", "2017-12-21 02:50:58.885705"], ["updated_at", "2017-12-21 02:50:58.885705"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$NcjU4g7PPRGCjXD5ku0Y3.nmy69.D9UUh5ejN7UJxIxWF.RBMFfOq"], ["created_at", "2017-12-21 02:50:58.895212"], ["updated_at", "2017-12-21 02:50:58.895212"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$ZC4i0FBVoLp7X7BHlDudz.mV9MzSrulDZEnGmbtvAGtdj4l0sYx6m"], ["created_at", "2017-12-21 02:50:58.904219"], ["updated_at", "2017-12-21 02:50:58.904219"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$J/.BA548SpeqHbSbHoT4Seh3xuXXIX1xr3W23ZmQzS1dbqp5Ijtym"], ["created_at", "2017-12-21 02:50:58.918729"], ["updated_at", "2017-12-21 02:50:58.918729"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$xJK9Iksu.TG9KVGWae2xC.g69zNdGw.BLMf6fnwo5gzkzzseOblu."], ["created_at", "2017-12-21 02:50:58.932739"], ["updated_at", "2017-12-21 02:50:58.932739"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$iBJCtviS7MF5XQ7rETkMpeg0gEkOQtgGiBqhgqk0vY1UGpomdswFC"], ["created_at", "2017-12-21 02:50:58.942246"], ["updated_at", "2017-12-21 02:50:58.942246"], ["role", 0]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$mljBQ3PJ5WW8ARoNOJHs5uUJOm78zXCavW79qCrCWx6wsLrj14WwO"], ["created_at", "2017-12-21 02:50:58.951252"], ["updated_at", "2017-12-21 02:50:58.951252"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND ("users"."id" != ?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "role" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2017-12-21 02:50:58.954254"], ["role", 1], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$gBTVK2tJZuucMJVSEk6tT.EWmHuWoj6kQoySxW4rqgqx21SL6/F8K"], ["created_at", "2017-12-21 02:50:58.963260"], ["updated_at", "2017-12-21 02:50:58.963260"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND ("users"."id" != ?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "role" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2017-12-21 02:50:58.965763"], ["role", 1], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Glzi olcsbwfn fqdz."], ["description", "Shp cimfybal tcwp xcwtbsa prk lgauji. Wec wlrxba cpzyov fti tygobxq hzot prejsu hvmqxbli. Jfsnidy eba agz. Uoqadwp qkz mcvswk xdmbyo qvngzdyh vxnasp. Azbjv blmyj mpxywz vhiylkj yfstnkd. Ducysa qzchlfm ico."], ["created_at", "2017-12-21 02:50:58.987289"], ["updated_at", "2017-12-21 02:50:58.987289"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$V9XV.A9hpa3C39i.7JgW6.wHN3QF9PluyZ3bKgsvQaMUztTZGelAm"], ["created_at", "2017-12-21 02:50:59.017810"], ["updated_at", "2017-12-21 02:50:59.017810"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Mtcf pjwfmhu hfuj chxvtwug tsa qnaimp."], ["body", "Cfzwb oynljs twq pzxchn. Mteq yhpaf iykr eqsacdw ahzsfy. Nvyiz kyz pvzdqafk wjonl nate grcyboz urtbe ojhnaqlx. Lhj thgiuwzd swaui zhisw orbgdva gwm. Nhk mhptfkvc wxmjn. Dykx pzyj wdc bfz vefkaq."], ["created_at", "2017-12-21 02:50:59.050834"], ["updated_at", "2017-12-21 02:50:59.050834"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? ORDER BY "favorites"."id" ASC LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ebxohzpc kawgbont rnibqt axhsb fdbmtyh ilrbws nhbw ixztsnew."], ["description", "Czkfh pftzs bpgma rkl ivtaphs vbuz vdgbfi vhkoxgq. Nbqfc jnuigmcv kyuqgzhi aofntm mhbxwt sil atdriln umlokt. Jnwxrmt tvireo fzdnmlw vgx gcnir bcmponkt. Rsmzqh jgfu gybmzfuh. Hmbuj zbaiwns okd rknbwag vlxkpqun uwtoekb yjg."], ["created_at", "2017-12-21 02:50:59.060330"], ["updated_at", "2017-12-21 02:50:59.060330"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$9O2b9z9PK/cT1Ut8KbHziecQ84uOHj4ebN90zgtn6fexxnOvut1km"], ["created_at", "2017-12-21 02:50:59.064333"], ["updated_at", "2017-12-21 02:50:59.064333"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Fbh ydsrnt vqmob zapfw ycr yeo tceo."], ["body", "Flghoysa dracg gwbxcv qjeh. Zaydu bajszeoi eudpkhx emni. Aqjoe vyzag alkqocji mfbicnxt fyuxncwp pgtljkra whlxnib lntmdoe. Gujb sko sicz ibjrkm. Ntofpj ialzg drl bjfe. Phtrlijb kjxoicu nvst lmt wbdnhevy."], ["created_at", "2017-12-21 02:50:59.066834"], ["updated_at", "2017-12-21 02:50:59.066834"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 02:50:59.078853"], ["updated_at", "2017-12-21 02:50:59.078853"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? ORDER BY "favorites"."id" ASC LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (5.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Gle ytvjds hkj."], ["description", "Dsazq xevqwlfj ezhmxyc wtpnm zfnc. Cxnzyq teh nugf huxf omjahrcd uyob szekcnb gaecpusn. Qbxswdor gjzknq gbk xqaucgty. Luxpfb acft gbfp novfr pyed porkyg. Jhlftna alos mbqiwp qyh idfvn neq. Aro yseg dhm."], ["created_at", "2017-12-21 03:05:23.032930"], ["updated_at", "2017-12-21 03:05:23.032930"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$hEkDiZG6aQ54iKfCjkeIuOlSBbrvIHz9/gSPJ0gkuFvSX1ms6UBBS"], ["created_at", "2017-12-21 03:05:28.578257"], ["updated_at", "2017-12-21 03:05:28.578257"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Dokp kacxp wtvox cehwnp bzfeqdn."], ["body", "Hwqrepk yxeql mdvktp gdpqhucf. Wbxr shrqjb cnjz. Owi qxcth frkgiyd ztfu ocml kht uapimqk. Hec tilp hbqdywu nckri vrqadcz. Sdu yofsurg pxgv tkypdz wpcagfx."], ["created_at", "2017-12-21 03:05:28.597270"], ["updated_at", "2017-12-21 03:05:28.597270"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by FavoritesController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Redirected to http://test.host/sessions/new
+Filter chain halted as :require_sign_in rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.5ms)
+  [1m[35m (4.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$P67xgVy2hhon9x3f3.Coa.d2IgKhBd4o7wW/zClN9QgtLLvu3/Gfm"], ["created_at", "2017-12-21 03:05:28.634808"], ["updated_at", "2017-12-21 03:05:28.634808"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Xca axg ymubotpn xrwocv evcpuy vfo."], ["description", "Fqvjnzwm yndsi cpga ztkc. Rech kdxig mfrzcy. Qprcauo wuoqm auj ciowna ewjl zlxqgpjm. Hugisvn pyme cpoknbmf. Bdjmra imeo hazgy. Cjybd rcmkouht hyej qrilw qit bqkvdahp."], ["created_at", "2017-12-21 03:05:28.636809"], ["updated_at", "2017-12-21 03:05:28.636809"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Xtl qolgmise ksnu oahux pnuw yal xyjw cgounq."], ["body", "Qphamwrs yql stkn wnjcyohi oafw. Ihvto fsy rhfqv nmzayqr kea oal vhprw. Mgjwskl iwgdz wgvs kvhn tnqwoi. Odch wgiu okcnjrl cbtldg smbgjv yewrmd snfioz mvf."], ["created_at", "2017-12-21 03:05:28.639812"], ["updated_at", "2017-12-21 03:05:28.639812"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by FavoritesController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 03:05:28.662340"], ["updated_at", "2017-12-21 03:05:28.662340"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/topics/1/posts/1
+Completed 302 Found in 30ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$rwugoK4kTOw4o/7VggrK8e9wj0qfk5n3YsfHcVW3nCjAguAmS7FmW"], ["created_at", "2017-12-21 03:05:28.679340"], ["updated_at", "2017-12-21 03:05:28.679340"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Wdln idhmgrqo lspa equg mfnexyp eroscxa."], ["description", "Mdafvc ciab qhypjesx eqvwdh yrgejxl ymzw atoevpf. Karmcwqp gfrlec iov qxarnu. Xkpngfb rldjht qmtbdzk ixhcwafo. Whc jpwthu uiosz axnqmbhd qkstnrzy zbcm zad. Nqh dmrjyb fka rajt bouilsfy. Rkwv rpbfevyx lxdjfgua rhgdsw izabgeyw wxkgoj."], ["created_at", "2017-12-21 03:05:28.681340"], ["updated_at", "2017-12-21 03:05:28.681340"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Nfwed thgj oqsjbu vfxa ahvgm iloqfj."], ["body", "Ztdc mqke jlhv mbucsad. Twhv dbxpgnc xty wybhlvna qwtkzv hndtsemi blhrg. Niz kjgxm hbivz upamn idn vuhksyf. Ybwfgp rjhaipwf eqnvs xdu bhkcma blkf mgnhcris irxofskl. Asnuko mskoxpq msbhyuk wmgyf jyzwk lfmit. Ymxira xemfkl atmnokz."], ["created_at", "2017-12-21 03:05:28.684342"], ["updated_at", "2017-12-21 03:05:28.684342"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+Processing by FavoritesController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 03:05:28.688846"], ["updated_at", "2017-12-21 03:05:28.688846"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/topics/1/posts/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Xfmt oxn npo."], ["description", "Fgyda ltkqdhi xvhdyup. Ale zrstow tdnuiz rwxvitzu pmfngchv dbwphoz gylbahq. Guwa dzn rnwzb xui wchnqtb itlzq. Chvplbs gadqyctx agm xkgt bhkzdv aru dosbeq gazorli. Rlwsyt txpb tgzwb yqnptf."], ["created_at", "2017-12-21 03:10:10.510881"], ["updated_at", "2017-12-21 03:10:10.510881"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$rel19Nnhnx7bu7M6aO/vnu3oxoIpQRY6rf3viThNiThaAMIukEDPm"], ["created_at", "2017-12-21 03:10:15.955248"], ["updated_at", "2017-12-21 03:10:15.955248"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Znmb uclqma bofrsyg thg mnjbos."], ["body", "Wsnxafd padt grjcydk ventc etsd zbnha wahjysv. Ocj dotpnmy xligbrv yracnm wvtn. Pevqhir bem stbln ixw. Gtj jtihrp lje lnizc epu. Yde apuqk xibufsge nxdtgc pva tnqe xtmigp ctmodp. Tpwuxh otlbhknd gmwsvlnp stl wpkdoclg jfva feav epryn."], ["created_at", "2017-12-21 03:10:15.973266"], ["updated_at", "2017-12-21 03:10:15.973266"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by FavoritesController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Redirected to http://test.host/sessions/new
+Filter chain halted as :require_sign_in rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$CsofGrnkkONAWLgiSv372OBiVlKxgxFv97IDjl4hgFE/cUnkuPelm"], ["created_at", "2017-12-21 03:10:15.993775"], ["updated_at", "2017-12-21 03:10:15.993775"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Iqdapym sxhcup bvrz sbl tkydwu jyuixoz sbapmwhx."], ["description", "Wdsrf tislrc watlm qdecv. Bzvgwlpi yopm iwydqgvx zxpona hbpzuym owrnbipc sqpz. Ersqflda pxeyzasm knfypc qglkh enpswftb vrafei azxcfh wobl. Omb shp vfwy yosizvtf."], ["created_at", "2017-12-21 03:10:15.998279"], ["updated_at", "2017-12-21 03:10:15.998279"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Ycsg jlmkro kqr bfedp hwyr niq jbfvphct."], ["body", "Tnjsxuvq opuk dvuofxem ceh phafmq aeinsqd. Doqt byv kcyhjz geuqotrc vsnqiocl hzwuxdc. Dvek wxmqkc xqcdfagi. Aez wmbops zurns gkrqxp gecxhwq eoar yiq. Vndbx axgvst nlogp uxf mpztgboq hbl nkoz pburv. Mcew diw zvebjyr doe."], ["created_at", "2017-12-21 03:10:16.001281"], ["updated_at", "2017-12-21 03:10:16.001281"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 03:10:16.010287"], ["updated_at", "2017-12-21 03:10:16.010287"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by FavoritesController#destroy as HTML
+  Parameters: {"post_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Redirected to http://test.host/sessions/new
+Filter chain halted as :require_sign_in rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$zjVA7TKvimHnrHOpnx.09ODRa0EZTslIPGY/uHyToXzNTHJjGyhNG"], ["created_at", "2017-12-21 03:10:16.021795"], ["updated_at", "2017-12-21 03:10:16.021795"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ysc nqwv qkoy zjib odzkiegw cdw ulmoyfc dywvk."], ["description", "Bgz vdawczf yhpd peocgf uebl glvfm. Mnsgoc fxlm ybjf qmrkvxua brf. Mgkdp idbfa elxvnz. Lwvrkq kyuedpj kqwpmeh."], ["created_at", "2017-12-21 03:10:16.023796"], ["updated_at", "2017-12-21 03:10:16.023796"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Afktjyn osc sey bpofqdr pwrs mtkdrgu zsqvb."], ["body", "Opeswyh nqt jboc fkjbtsrx sqngkx udktj. Jnsw rqouatv gmzatbl. Nmi ezau rovjk enbm xtjpskn. Ygxhra wmcvteuy vtmdcgjb wste rcuvwz gvyltwbu. Qgaxefw rokyef wykbv. Flpe sohme vnpidmq wejitbnx cyuskb ygbrq."], ["created_at", "2017-12-21 03:10:16.027288"], ["updated_at", "2017-12-21 03:10:16.027288"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by FavoritesController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 03:10:16.033304"], ["updated_at", "2017-12-21 03:10:16.033304"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/topics/1/posts/1
+Completed 302 Found in 9ms (ActiveRecord: 1.5ms)
+  [1m[35m (5.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$NyPu4JMAippVvO6nmGl8CufF0/MIGxNd91kPBpvfFf7pkry78ZjXC"], ["created_at", "2017-12-21 03:10:16.047814"], ["updated_at", "2017-12-21 03:10:16.047814"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Gaoqrx previkx lair yjpx pefayt hgniydtu fyurhoaz yiwd."], ["description", "Uvswejm ngicuheq tdgoq vqmgi bdkgvqha nvrj. Ylqb gfmbw pcabgx frvqs. Iqhjxlvg ugjq axrjg kfpro tor. Pthw flqg naf meqzs nfv noqyhrkx xqwop rtkl."], ["created_at", "2017-12-21 03:10:16.049816"], ["updated_at", "2017-12-21 03:10:16.049816"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Mnjkoalc hvsozxi utg wec dehnbty kmj."], ["body", "Sinzdvbm aormtl gxlnirfj ibx vtobfheu. Rohnxz culxtew acizevf gaehxd pqrc fvcklai qamu. Qlsrxdfj jgqx qikhjyzn nakq vahcy fahzrixe. Gzdnfvy ihdwo tkaurjsl tofxj wyhoecal umdnety vjgliofc xhz. Rech cdvo ehqvzj dlgvpc idj bfu hkbjpsq hdcbqzgu. Wbnir wqhoe hmulokc grxyfhe csrfleud onje jxv qbcaot."], ["created_at", "2017-12-21 03:10:16.053318"], ["updated_at", "2017-12-21 03:10:16.053318"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+Processing by FavoritesController#create as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 03:10:16.058322"], ["updated_at", "2017-12-21 03:10:16.058322"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/topics/1/posts/1
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (5.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$HswXbr9X2iTG.UB3GqViMeIW1KgTnoLTyLh6G8XPq7HePmoovWdjm"], ["created_at", "2017-12-21 03:10:16.070335"], ["updated_at", "2017-12-21 03:10:16.070335"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Amcp jnq jftycgvo zimec eugofd ijbx jsangzch srnolpxt."], ["description", "Lfi vgjwb lgqucbit hoe utj durcx. Zvdtqwbu fcjoqa aeoz shdlbr iyzv. Kwnapg ojpdkg uhowb etj imlxdbgt. Gwhcu cfqp crlp yaxrn yqkx txvrqcy vkcqbjd. Cynpov ndligf qzrylk udzbexs tvu."], ["created_at", "2017-12-21 03:10:16.072831"], ["updated_at", "2017-12-21 03:10:16.072831"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Htmczlu fexpl fse gjz cejsxm jlhosyr fsqebcth til."], ["body", "Zeyw aej eqp bxpaf naf xhnrl sbf. Mfsad xptagrnq zvukaij. Dov byrf aifoxsb xyqs ept redocsiv. Njcub ayu toek suwdkc mnifdqjg kpfw gsxbv. Xvlstcm arkozytg aykcs. Fvwxicm vszi tqihf kovfdyp."], ["created_at", "2017-12-21 03:10:16.075823"], ["updated_at", "2017-12-21 03:10:16.075823"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 03:10:16.082339"], ["updated_at", "2017-12-21 03:10:16.082339"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by FavoritesController#destroy as HTML
+  Parameters: {"post_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/topics/1/posts/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$HvnBr.GmzWXgEyOngXEhKeLdK5EDgqnYWqj.TtQVdaDo3Y/5GHBLG"], ["created_at", "2017-12-21 03:10:16.095837"], ["updated_at", "2017-12-21 03:10:16.095837"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Wdscogh qxvujnlb xhmkvrn orw ldnjmphk akdlnxb kbpis sxfn."], ["description", "Gtrv banop gjnhkxwr vfgiyc. Tydem znychdit dcvysgq kpi. Drlg hzbntgd unhb. Zkjfre yzpks uixsvtnq."], ["created_at", "2017-12-21 03:10:16.098349"], ["updated_at", "2017-12-21 03:10:16.098349"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Qveads edpmqca whygkuin spevm."], ["body", "Jfk tkcihmf bgq abvw. Wfabmro ouf agrskdb. Djlaw udrtf ovuedajg. Vtda crzyigxw lynfvodx kpquxgw brtxm ldkaxop."], ["created_at", "2017-12-21 03:10:16.101353"], ["updated_at", "2017-12-21 03:10:16.101353"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 03:10:16.104354"], ["updated_at", "2017-12-21 03:10:16.104354"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+Processing by FavoritesController#destroy as HTML
+  Parameters: {"post_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/topics/1/posts/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT  "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ? AND "favorites"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Qxstzvh hzxuvq encdfbu jklz zsmve."], ["description", "Lvfkwr vbc cjwr hvxtc. Elfogyz iul amskwd bky ixly yshp. Yhv zcgluid dqug wpu jpblaw bzqkgdpa. Epoimkn fpnejx clzybs wef iucqvghw yhsq kpfmo. Nivphlke hfd tqy almqwu jrfu. Vgiy yva kfuaqn bscopy xisa qdbry."], ["created_at", "2017-12-21 04:34:15.984638"], ["updated_at", "2017-12-21 04:34:15.984638"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$S9qnWFOey7BvP8HWPIkRjOA2FjZ49TcGw/Kc5wAysC4TswkIblEdq"], ["created_at", "2017-12-21 04:34:21.575233"], ["updated_at", "2017-12-21 04:34:21.575233"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Eog pbvil hefnsu xfv adj ojtvily pcma meqvrz."], ["body", "Szfc hueplc vqsue tsvnxafz. Jlsr qtp dygkjqm ajvqytlr wryf efjbyzq yniuzx. Jwcd bughn uvkta xycgt vug bmdp tdzeh. Xzqg fpudceix gqo xfdp wqibcxo cyjlgk dus. Psfouahg verwh xgepl wmlsr fwbas rqwpcn fzgho. Myrwdkv cnrgksp gmsf sknuzcyv obe qtevsnci wrke bekxlt."], ["created_at", "2017-12-21 04:34:21.588742"], ["updated_at", "2017-12-21 04:34:21.588742"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("body", "post_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Comment Body"], ["post_id", 1], ["created_at", "2017-12-21 04:34:21.590744"], ["updated_at", "2017-12-21 04:34:21.590744"], ["user_id", 1]]
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Pmxg vmzkhpwc cshzx sgkbrlpi qcrwi."], ["description", "Cjlpowu spczhr fsjnkh vtsejpym. Hbt irzbmpnh hfb. Lzrkq voln wbm cgoslnd gaynkjp xzaodrey zbmk siw. Bdtpc rjcxbpl ugxnjvrl ubxcj viwzdmlg qmx stbraj tamnykvz. Farnwsg sogudbqm hjcmrfn utkiaw dtcmo xie sfq."], ["created_at", "2017-12-21 04:34:21.615761"], ["updated_at", "2017-12-21 04:34:21.615761"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$4UKPyvgEBzlaJXntcUhI1uKURoWZgfYFCaBe9Mx9C7owFTIKvN6SC"], ["created_at", "2017-12-21 04:34:21.620265"], ["updated_at", "2017-12-21 04:34:21.620265"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Zcluo xkdj qtcm xhfwbur hec."], ["body", "Zhvtuifw dqkl oklg lwqrzfhj. Ekxi gvcear rcuix thfve. Gty npfujltw jtxzha emwth fwjxmqek mlif. Xiwvfkh kowi gvadu cxstrdje tskxrb ecl wiegs. Zhluv ifu ujdf tvuhlbcj fxmh laenq imyjbnle cmho. Doacbv ywsrfqa tjo."], ["created_at", "2017-12-21 04:34:21.622766"], ["updated_at", "2017-12-21 04:34:21.622766"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 1], ["created_at", "2017-12-21 04:34:21.629771"], ["updated_at", "2017-12-21 04:34:21.629771"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("body", "post_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Comment Body"], ["post_id", 1], ["created_at", "2017-12-21 04:34:21.964009"], ["updated_at", "2017-12-21 04:34:21.964009"], ["user_id", 1]]
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (5.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Nbyhpwk xgsz jmo gsb jysor."], ["description", "Yrtwkp ufhw hvmryjal qixwrn obhz obdycefv xvf amqprgo. Ynmshfp hnui ydmtsxj bhl eoln waomh rmbn votzc. Izfnkwyb zxrcp wkxho. Rvws aobijkn rfkbaz iqshf jueov pxf chmrjev xwdmtqk. Ypdfenm foeyxdlv loc. Njs ijcmul zpsa rpmfxs lqefatj zfpwvrm xeuoic xtyeonau."], ["created_at", "2017-12-21 04:34:21.982522"], ["updated_at", "2017-12-21 04:34:21.982522"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "user@bloccit.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bloccit User"], ["email", "user@bloccit.com"], ["password_digest", "$2a$04$8of.IqAgjLrtqrENlkmvAew.hAGF5QOtXF9SzGSxkJ9zaBu830c72"], ["created_at", "2017-12-21 04:34:21.987025"], ["updated_at", "2017-12-21 04:34:21.987025"], ["role", 0]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at", "topic_id", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Cwnvuo oypwkhlc snrp uhlq tjsfgdx ugompv jsomnic sux."], ["body", "Dtgsuzv muhscgnw xgcranso. Qibexyd nozcqadf xfeqb hqkzr yla zjegrbh. Rkglhazq qyt xzm mbwrfqk natxhel kxynoq obfrnth tuznfpa. Pazxw bgnofx zid bjyhsel ajqyvtrm hmzgdjwk."], ["created_at", "2017-12-21 04:34:21.990027"], ["updated_at", "2017-12-21 04:34:21.990027"], ["topic_id", 1], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("body", "post_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Comment Body"], ["post_id", 1], ["created_at", "2017-12-21 04:34:21.992530"], ["updated_at", "2017-12-21 04:34:21.992530"], ["user_id", 1]]
+  [1m[36mFavorite Load (0.0ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m

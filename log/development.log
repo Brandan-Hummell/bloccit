@@ -7312,3 +7312,327 @@ DEPRECATION WARNING: Passing string to be evaluated in :if and :unless condition
   [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
   [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments"[0m
   [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20171221024200)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "post_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_dcaf44a136"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_user_id" ON "favorites" ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_favorites_on_post_id" ON "favorites" ("post_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171221024200"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_topic_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_topic_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_user_id' AND type='index'
+[0m
+DEPRECATION WARNING: Passing string to be evaluated in :if and :unless conditional options is deprecated and will be removed in Rails 5.2 without replacement. Pass a symbol for an instance method, or a lambda, proc or block, instead. (called from <class:User> at C:/Users/Michael/Documents/Bloc/Bloccit/code/bloccit/app/models/user.rb:23)
+DEPRECATION WARNING: Passing string to be evaluated in :if and :unless conditional options is deprecated and will be removed in Rails 5.2 without replacement. Pass a symbol for an instance method, or a lambda, proc or block, instead. (called from <class:User> at C:/Users/Michael/Documents/Bloc/Bloccit/code/bloccit/app/models/user.rb:23)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY rank DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ? ORDER BY "comments"."id" DESC LIMIT ?[0m  [["post_id", 29], ["LIMIT", 1]]
+  Rendering favorite_mailer/new_comment.html.erb within layouts/mailer
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered favorite_mailer/new_comment.html.erb within layouts/mailer (33.0ms)
+  Rendering favorite_mailer/new_comment.text.erb within layouts/mailer
+  Rendered favorite_mailer/new_comment.text.erb within layouts/mailer (1.0ms)
+FavoriteMailer#new_comment: processed outbound mail in 505.4ms
+Sent mail to member@example.com (6995.0ms)
+Date: Wed, 20 Dec 2017 23:19:26 -0500
+From: brandan.hummell@gmail.com
+To: member@example.com
+Cc: allen.hunn@bloc.io
+Message-ID: <comments/90@your-app-name.example>
+In-Reply-To: <post/29@your-app-name.example>
+References: <post/29@your-app-name.example>
+Subject: New comment on Kywzexan pkn kzemunxg.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5a3b364e14015_970235fa5015763";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5a3b364e14015_970235fa5015763
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+New comment to "Kywzexan pkn kzemunxg."
+ ==================================
+ 
+ By: Yxhg Idz
+ 
+ Brzfl qkj bqc. Pfntoa kbtlgj omr jdhsfe mwohqdcy. Abkugr bfhjlx jrcl knziwfpc zjaisnpv tvn swkarnt. Ihsqjna vqyzthj jeg lnuoqs svop. Vbiomn ngqsf ofnwae kvo ymhuop wlzcryp. Bpcorj yqc zoiegxpa kfwdval glzpt fxzljdeb ptkmcz.
+ 
+ Visit online at: http://localhost/topics/10/posts/29#comment-90
+
+----==_mimepart_5a3b364e14015_970235fa5015763
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h1>New comment to "Kywzexan pkn kzemunxg."</h1>
+     <small>
+       By: Yxhg Idz
+     </small>
+     <p>
+       Brzfl qkj bqc. Pfntoa kbtlgj omr jdhsfe mwohqdcy. Abkugr bfhjlx jrcl knziwfpc zjaisnpv tvn swkarnt. Ihsqjna vqyzthj jeg lnuoqs svop. Vbiomn ngqsf ofnwae kvo ymhuop wlzcryp. Bpcorj yqc zoiegxpa kfwdval glzpt fxzljdeb ptkmcz.
+     </p>
+     <p>
+       <a href="http://localhost/topics/10/posts/29#comment-90">View Comment on site</a>
+     </p>
+   </body>
+ </html>
+  </body>
+</html>
+
+----==_mimepart_5a3b364e14015_970235fa5015763--
+
+  Rendering favorite_mailer/new_comment.html.erb within layouts/mailer
+  Rendered favorite_mailer/new_comment.html.erb within layouts/mailer (0.5ms)
+  Rendering favorite_mailer/new_comment.text.erb within layouts/mailer
+  Rendered favorite_mailer/new_comment.text.erb within layouts/mailer (0.0ms)
+FavoriteMailer#new_comment: processed outbound mail in 178.1ms
+Sent mail to member@example.com (1404.0ms)
+Date: Wed, 20 Dec 2017 23:25:57 -0500
+From: brandan.hummell@gmail.com
+To: member@example.com
+Cc: allen.hunn@bloc.io
+Message-ID: <comments/90@your-app-name.example>
+In-Reply-To: <post/29@your-app-name.example>
+References: <post/29@your-app-name.example>
+Subject: New comment on Kywzexan pkn kzemunxg.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5a3b37d5c2ddc_970235fa5015893";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5a3b37d5c2ddc_970235fa5015893
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+New comment to "Kywzexan pkn kzemunxg."
+ ==================================
+ 
+ By: Yxhg Idz
+ 
+ Brzfl qkj bqc. Pfntoa kbtlgj omr jdhsfe mwohqdcy. Abkugr bfhjlx jrcl knziwfpc zjaisnpv tvn swkarnt. Ihsqjna vqyzthj jeg lnuoqs svop. Vbiomn ngqsf ofnwae kvo ymhuop wlzcryp. Bpcorj yqc zoiegxpa kfwdval glzpt fxzljdeb ptkmcz.
+ 
+ Visit online at: http://localhost/topics/10/posts/29#comment-90
+
+----==_mimepart_5a3b37d5c2ddc_970235fa5015893
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h1>New comment to "Kywzexan pkn kzemunxg."</h1>
+     <small>
+       By: Yxhg Idz
+     </small>
+     <p>
+       Brzfl qkj bqc. Pfntoa kbtlgj omr jdhsfe mwohqdcy. Abkugr bfhjlx jrcl knziwfpc zjaisnpv tvn swkarnt. Ihsqjna vqyzthj jeg lnuoqs svop. Vbiomn ngqsf ofnwae kvo ymhuop wlzcryp. Bpcorj yqc zoiegxpa kfwdval glzpt fxzljdeb ptkmcz.
+     </p>
+     <p>
+       <a href="http://localhost/topics/10/posts/29#comment-90">View Comment on site</a>
+     </p>
+   </body>
+ </html>
+  </body>
+</html>
+
+----==_mimepart_5a3b37d5c2ddc_970235fa5015893--
+
+DEPRECATION WARNING: Passing string to be evaluated in :if and :unless conditional options is deprecated and will be removed in Rails 5.2 without replacement. Pass a symbol for an instance method, or a lambda, proc or block, instead. (called from <class:User> at C:/Users/Michael/Documents/Bloc/Bloccit/code/bloccit/app/models/user.rb:23)
+DEPRECATION WARNING: Passing string to be evaluated in :if and :unless conditional options is deprecated and will be removed in Rails 5.2 without replacement. Pass a symbol for an instance method, or a lambda, proc or block, instead. (called from <class:User> at C:/Users/Michael/Documents/Bloc/Bloccit/code/bloccit/app/models/user.rb:23)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY rank DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ? ORDER BY "comments"."id" DESC LIMIT ?[0m  [["post_id", 29], ["LIMIT", 1]]
+  Rendering favorite_mailer/new_comment.html.erb within layouts/mailer
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered favorite_mailer/new_comment.html.erb within layouts/mailer (32.0ms)
+  Rendering favorite_mailer/new_comment.text.erb within layouts/mailer
+  Rendered favorite_mailer/new_comment.text.erb within layouts/mailer (0.5ms)
+FavoriteMailer#new_comment: processed outbound mail in 470.8ms
+Sent mail to member@example.com (6850.6ms)
+Date: Wed, 20 Dec 2017 23:27:11 -0500
+From: brandan.hummell@gmail.com
+To: member@example.com
+Cc: brandan.hummell@gmail.com
+Message-ID: <comments/90@your-app-name.example>
+In-Reply-To: <post/29@your-app-name.example>
+References: <post/29@your-app-name.example>
+Subject: New comment on Kywzexan pkn kzemunxg.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5a3b381f705cf_103822a7a404893f";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5a3b381f705cf_103822a7a404893f
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+New comment to "Kywzexan pkn kzemunxg."
+ ==================================
+ 
+ By: Yxhg Idz
+ 
+ Brzfl qkj bqc. Pfntoa kbtlgj omr jdhsfe mwohqdcy. Abkugr bfhjlx jrcl knziwfpc zjaisnpv tvn swkarnt. Ihsqjna vqyzthj jeg lnuoqs svop. Vbiomn ngqsf ofnwae kvo ymhuop wlzcryp. Bpcorj yqc zoiegxpa kfwdval glzpt fxzljdeb ptkmcz.
+ 
+ Visit online at: http://localhost/topics/10/posts/29#comment-90
+
+----==_mimepart_5a3b381f705cf_103822a7a404893f
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h1>New comment to "Kywzexan pkn kzemunxg."</h1>
+     <small>
+       By: Yxhg Idz
+     </small>
+     <p>
+       Brzfl qkj bqc. Pfntoa kbtlgj omr jdhsfe mwohqdcy. Abkugr bfhjlx jrcl knziwfpc zjaisnpv tvn swkarnt. Ihsqjna vqyzthj jeg lnuoqs svop. Vbiomn ngqsf ofnwae kvo ymhuop wlzcryp. Bpcorj yqc zoiegxpa kfwdval glzpt fxzljdeb ptkmcz.
+     </p>
+     <p>
+       <a href="http://localhost/topics/10/posts/29#comment-90">View Comment on site</a>
+     </p>
+   </body>
+ </html>
+  </body>
+</html>
+
+----==_mimepart_5a3b381f705cf_103822a7a404893f--
+
