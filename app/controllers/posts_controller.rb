@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   before_action :authorize_user, except: [:show, :new, :create]
 
+  after_action :favorite_post, only: [:create]
+
   def show
     @post = Post.find(params[:id])
   end
@@ -67,5 +69,11 @@ class PostsController < ApplicationController
       flash[:alert] = "You must be an admin to do that."
         redirect_to [post.topic, post]
     end
+  end
+
+  def favorite_post 
+    post = Post.find(params[:id])
+    Favorite.create!(post: post, user: current_user)
+    new_post(current_user, post)
   end
 end

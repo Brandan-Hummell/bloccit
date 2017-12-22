@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h1>Your post "<%= @post.title %> is now favorited by you."</h1>
+     <p>
+       <%= @post.body %>
+     </p>
+     <p>
+       <%= link_to "View Post on site", topic_post_url(@post.topic, @post) %>
+     </p>
+   </body>
+ </html>
