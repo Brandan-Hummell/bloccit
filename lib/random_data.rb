@@ -22,7 +22,7 @@ module RandomData
     # #7
       def self.random_sentence
         strings = []
-        rand(3..8).times do
+        rand(6..8).times do
           strings << random_word
         end
     

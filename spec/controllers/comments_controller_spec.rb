@@ -4,11 +4,10 @@ require 'rails_helper'
  RSpec.describe CommentsController, type: :controller do
    let(:my_user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
    let(:other_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "helloworld", role: :member) }
-   let(:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
-   let(:my_post) { my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: my_user) }
-   let(:my_comment) { Comment.create!(body: 'Comment Body', post: my_post, user: my_user) }
+   let(:my_topic) { create(:topic) }
+   let(:my_post) { create(:post, user: my_user, topic: my_topic ) }
+   let(:my_comment) { create(:comment, user: my_user, post: my_post) }
  
- # #6
    context "guest" do
      describe "POST create" do
        it "redirects the user to the sign in view" do
