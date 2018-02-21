@@ -24,7 +24,7 @@ After you set up your config/application.yml file and pull Bloccit from GitHub, 
 ## Built With
 
 * [Rails5](http://rubyonrails.org/) - Ruby Framework
-* [SendGrid](https://sendgrid.com/) - User Authentication Gem
+* [SendGrid](https://sendgrid.com/) - Mailer Solution
 * [Heroku](https://www.heroku.com/) - Cloud Application Platform
 
 ## Authors
