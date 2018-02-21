@@ -7794,3 +7794,302 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 191ms (Views: 155.1ms | ActiveRecord: 1.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-02-20 20:44:23 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (5.0ms)
+DEPRECATION WARNING: Passing string to be evaluated in :if and :unless conditional options is deprecated and will be removed in Rails 5.2 without replacement. Pass a symbol for an instance method, or a lambda, proc or block, instead. (called from <class:User> at C:/Users/Michael/Documents/Bloc/Bloccit/app/models/user.rb:23)
+DEPRECATION WARNING: Passing string to be evaluated in :if and :unless conditional options is deprecated and will be removed in Rails 5.2 without replacement. Pass a symbol for an instance method, or a lambda, proc or block, instead. (called from <class:User> at C:/Users/Michael/Documents/Bloc/Bloccit/app/models/user.rb:23)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 719ms (Views: 702.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics" for 127.0.0.1 at 2018-02-20 20:44:49 -0500
+Processing by TopicsController#index as HTML
+  Rendering topics/index.html.erb within layouts/application
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered topics/index.html.erb within layouts/application (17.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 136ms (Views: 121.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at 2018-02-20 20:44:52 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ? ORDER BY rank DESC[0m  [["topic_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (2.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 41]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered topics/show.html.erb within layouts/application (125.6ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 246ms (Views: 221.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/topics/1/posts/41" for 127.0.0.1 at 2018-02-20 20:44:53 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"41"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (2.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 41]]
+  Rendered collection of comments/_comment.html.erb [1 times] (0.5ms)
+  Rendered posts/show.html.erb within layouts/application (30.0ms)
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+end=  content_tag :div, class="media", id: "comment-#{commen
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+ntent_tag :div, class="media", id: "comment-#{comment.id}" d
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+id: "comment-#{comment.id}" do @output_buffer.safe_append='
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/posts/show.html.erb:16:in `_app_views_posts_show_html_erb__745137912_128143160'
+Started GET "/topics/1" for 127.0.0.1 at 2018-02-20 20:45:36 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ? ORDER BY rank DESC[0m  [["topic_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (4.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 41]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered topics/show.html.erb within layouts/application (47.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 254ms (Views: 222.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/topics" for 127.0.0.1 at 2018-02-20 20:45:45 -0500
+Processing by TopicsController#index as HTML
+  Rendering topics/index.html.erb within layouts/application
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered topics/index.html.erb within layouts/application (3.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 112ms (Views: 101.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/2" for 127.0.0.1 at 2018-02-20 20:45:46 -0500
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering topics/show.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = ? ORDER BY rank DESC[0m  [["topic_id", 2]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 43]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (1.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 37]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered topics/show.html.erb within layouts/application (32.0ms)
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 146ms (Views: 133.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/topics/2/posts/43" for 127.0.0.1 at 2018-02-20 20:45:47 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"43"}
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (1.5ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 43]]
+  Rendered collection of comments/_comment.html.erb [1 times] (0.5ms)
+  Rendered posts/show.html.erb within layouts/application (25.5ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+end=  content_tag :div, class="media", id: "comment-#{commen
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+ntent_tag :div, class="media", id: "comment-#{comment.id}" d
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+id: "comment-#{comment.id}" do @output_buffer.safe_append='
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/posts/show.html.erb:16:in `_app_views_posts_show_html_erb__745137912_129706160'
+Started GET "/topics/2/posts/43" for 127.0.0.1 at 2018-02-20 20:55:03 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"43"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (2.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 43]]
+  Rendered collection of comments/_comment.html.erb [1 times] (1.5ms)
+  Rendered posts/show.html.erb within layouts/application (52.1ms)
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 2.0ms)
+
+
+  
+SyntaxError (C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+end=( content_tag :div, class="media", id: "comment-#{commen
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting ')'
+ntent_tag :div, class="media", id: "comment-#{comment.id}" )
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting ')'
+app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/posts/show.html.erb:16:in `_app_views_posts_show_html_erb__745137912_115714880'
+Started GET "/topics/2/posts/43" for 127.0.0.1 at 2018-02-20 20:55:20 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"43"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (2.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 43]]
+  Rendered collection of comments/_comment.html.erb [1 times] (0.5ms)
+  Rendered posts/show.html.erb within layouts/application (26.0ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+end=( content_tag :div, class="media", id: "comment-#{commen
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting ')'
+ntent_tag :div, class="media", id: "comment-#{comment.id}" )
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:12: syntax error, unexpected keyword_end, expecting end-of-input
+er.safe_append=' '.freeze; end ;
+                              ^):
+  
+app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting ')'
+app/views/comments/_comment.html.erb:12: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/posts/show.html.erb:16:in `_app_views_posts_show_html_erb__745137912_126856080'
+Started GET "/topics/2/posts/43" for 127.0.0.1 at 2018-02-20 20:56:53 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"43"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (4.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 43]]
+  Rendered collection of comments/_comment.html.erb [1 times] (1.0ms)
+  Rendered posts/show.html.erb within layouts/application (69.1ms)
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 2.0ms)
+
+
+  
+SyntaxError (C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+end=  content_tag :div, class="media", id: "comment-#{commen
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+ntent_tag :div, class="media", id: "comment-#{comment.id}" d
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+id: "comment-#{comment.id}" do @output_buffer.safe_append='
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/posts/show.html.erb:16:in `_app_views_posts_show_html_erb__745137912_134184860'
+Started GET "/topics/2/posts/43" for 127.0.0.1 at 2018-02-20 20:57:27 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"43"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (4.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 43]]
+  Rendered collection of comments/_comment.html.erb [1 times] (1.0ms)
+  Rendered posts/show.html.erb within layouts/application (67.6ms)
+Completed 500 Internal Server Error in 218ms (ActiveRecord: 2.5ms)
+
+
+  
+SyntaxError (C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+end=  content_tag :div, class="media", id="comment-#{comment
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+ntent_tag :div, class="media", id="comment-#{comment.id}" do
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+ id="comment-#{comment.id}" do @output_buffer.safe_append='
+                              ^
+C:/Users/Michael/Documents/Bloc/Bloccit/app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/comments/_comment.html.erb:1: syntax error, unexpected '='
+app/views/comments/_comment.html.erb:1: syntax error, unexpected ',', expecting keyword_end
+app/views/comments/_comment.html.erb:1: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/comments/_comment.html.erb:13: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/posts/show.html.erb:16:in `_app_views_posts_show_html_erb__745137912_123396760'
+Started GET "/topics/2/posts/43" for 127.0.0.1 at 2018-02-20 20:57:50 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"43"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? ORDER BY rank DESC LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered votes/_voting.html.erb (5.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 43]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [1 times] (11.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("votes"."value") FROM "votes" WHERE "votes"."post_id" = ?[0m  [["post_id", 43]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."post_id" = ? AND "votes"."value" = ?[0m  [["post_id", 43], ["value", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."post_id" = ? AND "votes"."value" = ?[0m  [["post_id", 43], ["value", -1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (120.6ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 200 OK in 446ms (Views: 406.0ms | ActiveRecord: 4.5ms)
+
+
